@@ -20,5 +20,6 @@ RUN poetry install -vvv --no-root || poetry install -vvv --no-root || poetry ins
 COPY . .
 
 EXPOSE 443
-
-CMD uvicorn src.main:app --host 0.0.0.0 --port 443
+# if __name__ == "__main__":
+#     uvicorn.run(app, host="0.0.0.0", port=8000)
+CMD ["poetry", "run", "uvicorn", "src.main:app", "--host", "0.0.0.0", "--port", "443"]
